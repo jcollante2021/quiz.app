@@ -1,14 +1,19 @@
+import { useEffect, useState } from "react"
 
+export default function Quiz({data, setTimeOut, questionNumber, setQuestionNumber}) {
+    const [question, setQuestion] = useState(null);
 
-export default function quiz() {
+    useEffect(() => {
+        setQuestion(data[questionNumber - 1])
+    }, [data, questionNumber]);
+
     return (
         <div className="trivia">
-            <div className="question">¿Cual es la primera pregunta que va a aparecer?</div>
+            <div className="question"> {question?.question} </div>
             <div className="answers">
-                <div className="answer">Opcion A</div>
-                <div className="answer">Opcion B</div>
-                <div className="answer">Opcion C</div>
-                <div className="answer">Opcion D</div>
+                {question?.answers.map((a) => (
+                    <div className="answer">{a.text}</div>
+                ))}
             </div>
         </div>
     )

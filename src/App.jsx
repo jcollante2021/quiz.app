@@ -4,6 +4,30 @@ import Quiz from "./components/Quiz.jsx";
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1)
+  const [timeOut, setTimeOut] = useState(false)
+
+  const data = [
+    {
+      id: 1,
+      question: "Crear una Pregunta para esta seccion",
+      answers: [
+        {text: "Opcion A", correct: false},
+        {text: "Opcion B", correct: false},
+        {text: "Opcion C", correct: true},
+        {text: "Opcion D", correct: false},
+      ]
+    },
+    {
+      id: 2,
+      question: "Crear una segunda Pregunta para esta seccion",
+      answers: [
+        {text: "Opcion A", correct: false},
+        {text: "Opcion B", correct: true},
+        {text: "Opcion C", correct: false},
+        {text: "Opcion D", correct: false},
+      ]
+    },
+  ]
   const moneyPiramid = [
     { id: 1, amount: "$ 100" },
     { id: 2, amount: "$ 200" },
@@ -28,7 +52,11 @@ function App() {
           <div className="timer">30</div>
         </div>
         <div className="bottom">
-          <Quiz/>
+          <Quiz 
+            data={data}
+            setTimeOut={setTimeOut}
+            questionNumber={questionNumber}
+            setQuestionNumber={setQuestionNumber}/>
         </div>
       </div>
       <div className="piramid">

@@ -75,6 +75,41 @@
     margin: 0 10px 20px 10px;
 }
 
+.answer:hover, .answer.active{
+    background: mediumblue;
+}
+
+.answer.correct{
+    animation: correct 3s ease forwards;
+}
+
+@keyframes correct {
+    0%, 22%, 42%, 62% {
+        background: mediumblue;
+    }
+    20%, 40%, 60%, 70% {
+        background: linear-gradient(#0e0124, #27074d);
+    }
+    72%, 100% {
+        background: green;
+    }
+}
+.answer.wrong{
+    animation: wrong 3s ease forwards;
+}
+
+@keyframes wrong {
+    0%, 22%, 42%, 62% {
+        background: mediumblue;
+    }
+    20%, 40%, 60%, 70% {
+        background: linear-gradient(#0e0124, #27074d);
+    }
+    72%, 100% {
+        background: crimson;
+    }
+}
+
 .piramid{
     width: 25%;
     display: flex;
