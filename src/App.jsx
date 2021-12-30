@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import "./app.css"
 import Quiz from "./components/Quiz.jsx";
+import Timer from "./components/Timer.jsx";
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1)
@@ -59,7 +60,9 @@ function App() {
         {stop ? (<h1 className="endText">JUEGO FINALIZADO <br/> Ganaste: {earned}</h1>) : (
           <>
             <div className="top">
-              <div className="timer">30</div>
+              <div className="timer">
+                <Timer setStop={setStop} questionNumber={questionNumber} />
+              </div>
             </div>
             <div className="bottom">
               <Quiz 
