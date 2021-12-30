@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react"
 
-export default function Timer( { setStop, questionNumber } ) {
+export default function Timer( { setStop, questionNumber, setFinalTime } ) {
     const [timer, setTimer] = useState(30);
+
+    useEffect(() => {
+        if(timer <= 5){
+            setFinalTime(true)
+        } else {
+            setFinalTime(false)
+        }        
+    }, [timer, setFinalTime])
 
     useEffect(() =>{
         if (timer === 0) return setStop(true)

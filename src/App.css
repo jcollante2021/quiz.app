@@ -33,6 +33,10 @@
     left: 85px;
 }
 
+.timer.finalTime{
+    color: crimson;
+}
+
 .bottom{
     height: 50%;
 }
