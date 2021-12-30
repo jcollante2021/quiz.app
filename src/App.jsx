@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import "./app.css"
 import Quiz from "./components/Quiz.jsx";
+import Start from "./components/Start.jsx";
 import Timer from "./components/Timer.jsx";
 
 function App() {
+  const [username, setUsername] = useState(null)
   const [questionNumber, setQuestionNumber] = useState(1)
   const [stop, setStop] = useState(false)
   const [earned, setEarned] = useState("$ 0")
@@ -56,34 +58,38 @@ function App() {
 
   return (
     <div className="app">
-      <div className="main">
-        {stop ? (<h1 className="endText">JUEGO FINALIZADO <br/> Ganaste: {earned}</h1>) : (
-          <>
-            <div className="top">
-              <div className="timer">
-                <Timer setStop={setStop} questionNumber={questionNumber} />
-              </div>
-            </div>
-            <div className="bottom">
-              <Quiz 
-                data={data}
-                setStop={setStop}
-                questionNumber={questionNumber}
-                setQuestionNumber={setQuestionNumber}/>
-            </div>
-          </>
-        )};
-      </div>
-      <div className="piramid">
-        <ul className="moneyList">
-          {moneyPiramid.map((m) =>(
-            <li className={questionNumber == m.id ? "moneyListItem active" : "moneyListItem"}>
-              <span className="moneyListItemNumber">{m.id}</span>
-              <span className="moneyListItemAmount">{m.amount}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {username ? (
+        <>
+          <div className="main">
+            {stop ? (<h1 className="endText">JUEGO FINALIZADO <br/> Ganaste: {earned}</h1>) : (
+              <>
+                <div className="top">
+                  <div className="timer">
+                    <Timer setStop={setStop} questionNumber={questionNumber} />
+                  </div>
+                </div>
+                <div className="bottom">
+                  <Quiz 
+                    data={data}
+                    setStop={setStop}
+                    questionNumber={questionNumber}
+                    setQuestionNumber={setQuestionNumber}/>
+                </div>
+              </>
+            )};
+          </div>
+          <div className="piramid">
+            <ul className="moneyList">
+              {moneyPiramid.map((m) =>(
+                <li className={questionNumber == m.id ? "moneyListItem active" : "moneyListItem"}>
+                  <span className="moneyListItemNumber">{m.id}</span>
+                  <span className="moneyListItemAmount">{m.amount}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      ) : (<Start setUsername={setUsername}/>)}
     </div>
   );
 }
