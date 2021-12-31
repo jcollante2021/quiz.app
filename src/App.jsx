@@ -58,7 +58,7 @@ function App() {
       answers: [
         {text: "Insectos", correct: false},
         {text: "Bambú", correct: false},
-        {text: "hojas de eucalipto", correct: true},
+        {text: "Hojas de eucalipto", correct: true},
         {text: "Flores silvestres", correct: false},
       ]
     },
